@@ -7,15 +7,29 @@
   --foreground: #171717;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+input, textarea {
+  font-size: 1rem !important; /* Equivalent to Tailwind's text-base */
+  background-color: white !important;
+  color: black !important;
+  padding: 8px !important;
+  border: 1px solid #d1d5db !important; /* gray-300 */
+  border-radius: 4px !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #6b7280 !important; /* gray-400 */
+  opacity: 1;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
 }
