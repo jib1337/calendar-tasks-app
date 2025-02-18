@@ -5,11 +5,17 @@ import { Input } from "./ui/input";
 
 const CalendarApp = () => {
   const [tasks, setTasks] = useState({});
-  const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
+
+  const today = new Date().toISOString().split('T')[0];
+  const [selectedDate, setSelectedDate] = useState(today);
+
   const [taskInput, setTaskInput] = useState('');
   const [descriptionInput, setDescriptionInput] = useState('');
-  const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
-  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+
+  const today2 = new Date();
+  const [currentMonth, setCurrentMonth] = useState(today2.getMonth());
+  const [currentYear, setCurrentYear] = useState(today2.getFullYear());
+
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState({});
   const [modalTaskIndex, setModalTaskIndex] = useState(null);
@@ -98,7 +104,7 @@ const CalendarApp = () => {
   };
 
   const calendar = generateCalendar();
-  const today = new Date().toISOString().split('T')[0];
+  //const today = new Date().toISOString().split('T')[0];
   const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   return (
@@ -147,7 +153,7 @@ const CalendarApp = () => {
           ))}
         </div>
 
-        <div className="border border-gray-300 rounded p-4">
+        <div className="border border-gray-300 rounded p-4 w-full max-w-5xl overflow-auto">
           {Object.entries(tasks).map(([date, taskList]) => (
             <Card key={date} className="mb-4">
               <CardContent>

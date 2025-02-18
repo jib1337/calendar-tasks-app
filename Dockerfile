@@ -60,6 +60,9 @@ EXPOSE 3000
 
 ENV PORT=3000
 
+ENV TZ=Australia/Sydney
+#RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 # server.js is created by next build from the standalone output
 # https://nextjs.org/docs/pages/api-reference/config/next-config-js/output
 ENV HOSTNAME="0.0.0.0"
